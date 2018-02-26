@@ -1,0 +1,14 @@
+version: '3'
+services:
+  web:
+    image: openresty/openresty:stretch
+    volumes:
+      - ./conf/nginx/:/etc/nginx/conf.d/:ro
+      - ./app/:/var/www/html/:ro
+    ports:
+      - 80:80
+
+  php:
+    build: .
+    volumes:
+      - ./app/:/var/www/html/:ro
